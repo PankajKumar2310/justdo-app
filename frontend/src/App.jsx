@@ -1,21 +1,33 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Navbar from './pages/Navbar'
-import Dashboard from './pages/Dashboard'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Login from './pages/Login'
+import Home from './pages/Home'
+import Register from './pages/Register'
+
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const appRouter=createBrowserRouter([
+    {
+      path:"/login",
+      element:<Login/>
+    },
+    {
+      path:"/",
+      element:<Home/>
+    },
+    {
+      path:"/signup",
+      element:<Register/>
+    }
+  ])
+  
 
   return (
-   <div className='flex flex-col'>
-    <Navbar/>
-    <div className='flex justify-center items-center  mt-10'>
-      <h1 className='font-bold text-xl  text-blue-500 bg-black rounded-2xl p-5'>Todo | Docker app</h1>
-    </div>
-   </div>
-  )
+    <>
+    <RouterProvider router={appRouter} />
+    </>
+  );
 }
 
 export default App

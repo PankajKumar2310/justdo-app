@@ -77,8 +77,10 @@ export const login = async (req, res) => {
                 message: "Email or password is incorrect."
             });
         }
-
-        return res.status(200).json({
+        const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: '1d' });
+        return res.status(200)
+        .cookie("token", token, { httpOnly: true, sameSite: "strict", maxAge: 24 * 60 * 60 * 1000 })
+        .json({
             success: true,
             message: `Login successfully, welcome ${user.fullName}`
         });

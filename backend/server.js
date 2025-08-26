@@ -5,9 +5,16 @@ import userRouter from './routes/user.js';
 import todoRouter from './routes/todo.js'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser';
+import cors from "cors";
+
 
 dotenv.config({});
 const app= express();
+
+app.use(cors({
+    origin: "http://localhost:5173",  // allow frontend
+    credentials: true,                // allow cookies/auth headers
+  }));
 
 
 connectDB();
