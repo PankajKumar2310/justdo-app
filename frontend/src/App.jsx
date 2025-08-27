@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Login from './pages/Login'
 import Home from './pages/Home'
 import Register from './pages/Register'
+import ProtectedRoute from './pages/ProtectedRoute'
 
 
 function App() {
@@ -14,7 +15,7 @@ function App() {
     },
     {
       path:"/",
-      element:<Home/>
+      element:<ProtectedRoute><Home/></ProtectedRoute>
     },
     {
       path:"/signup",

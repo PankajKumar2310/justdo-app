@@ -35,9 +35,8 @@ function Login() {
          }
             
         } catch (error) {
-            console.log(error);
-            toast.error(error.res.data.message)
-            
+            console.error(error);
+            toast.error(error?.response?.data?.message || "Login failed. Please try again.");
         }
     }
   return (

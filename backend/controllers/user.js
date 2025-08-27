@@ -35,10 +35,15 @@ export const register = async (req, res) => {
         });
 
         // ✅ generate token
+        if (!process.env.SECRET_KEY) {
+            console.error("SECRET_KEY env var is missing; cannot issue JWT");
+            return res.status(500).json({ success: false, message: "Server configuration error. Please try again later." });
+        }
         const token = jwt.sign({ userId: newUser._id }, process.env.SECRET_KEY, { expiresIn: '1d' });
 
         return res.status(201)
-            .cookie("token", token, { httpOnly: true, sameSite: "strict", maxAge: 24 * 60 * 60 * 1000 })
+            // Change: use SameSite=None; Secure for cross-site cookies from Render frontend
+            .cookie("token", token, { httpOnly: true, sameSite: "none", secure: true, maxAge: 24 * 60 * 60 * 1000 })
             .json({
                 success: true,
                 message: "Account created successfully."
@@ -77,9 +82,14 @@ export const login = async (req, res) => {
                 message: "Email or password is incorrect."
             });
         }
+        if (!process.env.SECRET_KEY) {
+            console.error("SECRET_KEY env var is missing; cannot issue JWT");
+            return res.status(500).json({ success: false, message: "Server configuration error. Please try again later." });
+        }
         const token = jwt.sign({ userId: user._id }, process.env.SECRET_KEY, { expiresIn: '1d' });
         return res.status(200)
-        .cookie("token", token, { httpOnly: true, sameSite: "strict", maxAge: 24 * 60 * 60 * 1000 })
+        // Change: use SameSite=None; Secure for cross-site cookies from Render frontend
+        .cookie("token", token, { httpOnly: true, sameSite: "none", secure: true, maxAge: 24 * 60 * 60 * 1000 })
         .json({
             success: true,
             message: `Login successfully, welcome ${user.fullName}`
@@ -95,7 +105,8 @@ export const login = async (req, res) => {
 export const logOut = async (req, res) => {   // ✅ fixed: added req, res
     try {
         return res.status(200)
-            .cookie('token', "", { maxAge: 0 })
+            // Change: clear cookie with SameSite=None; Secure too
+            .cookie('token', "", { httpOnly: true, sameSite: "none", secure: true, maxAge: 0 })
             .json({
                 success: true,
                 message: "User logged out successfully."
