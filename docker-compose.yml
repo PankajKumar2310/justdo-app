@@ -1,5 +1,6 @@
 version: '3.8'
-name : mernapp
+# Fix: normalized spacing around project name key
+name: mernapp
 
 services:
   mongo:
@@ -35,11 +36,13 @@ services:
       dockerfile: Dockerfile
     
     volumes:
-      -./frontend:/app
+      # Fix: add missing space after dash in host path mapping
+      - ./frontend:/app
       - /app/node_modules
     networks:
       - mernapp
-    command: npm run dev
+    # Change: bind Vite dev server to 0.0.0.0 for access from host
+    command: npm run dev -- --host
     ports:
       - "5173:5173"
     depends_on:
@@ -51,6 +54,5 @@ volumes:
 
 networks:
    mernapp:
-      driver:bridge
-
-      
+      # Fix: normalized spacing for driver value
+      driver: bridge
