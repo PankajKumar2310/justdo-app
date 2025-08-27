@@ -2,6 +2,7 @@ import { toast } from "sonner";
 import { Button } from "../components/ui/button";
 import React, { use } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 
 function Navbar() {
@@ -9,7 +10,7 @@ function Navbar() {
   const logoutHandler = async () => {
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/v1/user/logout",
+        `${API_BASE_URL}/api/v1/user/logout`,
         {},
         { withCredentials: true }
       );

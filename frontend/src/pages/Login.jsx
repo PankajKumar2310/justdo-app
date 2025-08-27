@@ -1,5 +1,6 @@
 import React, { use, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "@/lib/utils";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
@@ -20,7 +21,7 @@ function Login() {
     const loginHandler = async (e)=>{
         e.preventDefault();
         try {
-            const res=await axios.post("http://localhost:8080/api/v1/user/login",user,{headers:{
+            const res=await axios.post(`${API_BASE_URL}/api/v1/user/login`,user,{headers:{
                 "Content-Type":"application/json"
             },
             withCredentials:true

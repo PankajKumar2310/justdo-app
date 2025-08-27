@@ -6,6 +6,7 @@ import AllTodo from './allTodo';
 import Login from './Login';
 import { toast } from 'sonner';
 import axios from "axios";
+import { API_BASE_URL } from "@/lib/utils";
 
 
 function Dashboard() {
@@ -21,7 +22,7 @@ function Dashboard() {
     const addTodoHandler = async () => {
         try {
           const res = await axios.post(
-            "http://localhost:8080/api/v1/todo/create",
+            `${API_BASE_URL}/api/v1/todo/create`,
             { title, description },
             {
               headers: { "Content-Type": "application/json" },

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "@/lib/utils";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button"; 
 import { Pencil, Trash2 } from "lucide-react";
@@ -13,7 +14,7 @@ function AllTodo() {
 
   const fetchData = async () => {
     try {
-      const res = await axios.get("http://localhost:8080/api/v1/todo");
+      const res = await axios.get(`${API_BASE_URL}/api/v1/todo`, { withCredentials: true });
 
       if (res.data.success) {
         setTodos(res.data.todos);
@@ -28,7 +29,7 @@ function AllTodo() {
   // ✅ Delete handler
   const deleteTodo = async (todoId) => {
     try {
-      const res = await axios.delete(`http://localhost:8080/api/v1/todo/${todoId}`,{headers:{
+      const res = await axios.delete(`${API_BASE_URL}/api/v1/todo/${todoId}`,{headers:{
         "Content-Type":"application/json"
       },
       withCredentials:true,

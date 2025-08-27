@@ -12,7 +12,8 @@ dotenv.config({});
 const app= express();
 
 app.use(cors({
-    origin: "http://localhost:5173",  // allow frontend
+    // Change: allow deployed frontend and localhost dev (kept as array per request)
+    origin:["https://justdo-app.onrender.com", "http://localhost:5173"],
     credentials: true,                // allow cookies/auth headers
   }));
 

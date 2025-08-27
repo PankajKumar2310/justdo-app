@@ -3,6 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import axios from "axios";
+import { API_BASE_URL } from "@/lib/utils";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
@@ -24,7 +25,7 @@ function Register() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        "http://localhost:8080/api/v1/user/register",
+        `${API_BASE_URL}/api/v1/user/register`,
         user,
         {
           headers: {
