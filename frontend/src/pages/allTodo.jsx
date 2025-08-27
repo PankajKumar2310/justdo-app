@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { toast } from "sonner";
-import { Button } from "@/components/ui/button"; // ✅ using shadcn button
-import { Pencil, Trash2 } from "lucide-react"; // ✅ icons for edit & delete
+import { Button } from "@/components/ui/button"; 
+import { Pencil, Trash2 } from "lucide-react";
 
 function AllTodo() {
   const [todos, setTodos] = useState([]);
@@ -35,7 +35,7 @@ function AllTodo() {
     });
       if (res.data.success) {
         toast.success("Todo deleted successfully");
-        // Refetch data instead of just filtering local state
+        
         fetchData();
       }
     } catch (error) {
