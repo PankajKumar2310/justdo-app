@@ -12,12 +12,11 @@ dotenv.config({});
 const app= express();
 
 // Add: trust proxy so Secure cookies work behind Render's proxy
-app.set('trust proxy', 1);
+// app.set('trust proxy', 1);
 
 app.use(cors({
-    // Change: allow deployed frontend and localhost dev (kept as array per request)
     origin:["https://justdo-app.onrender.com", "http://localhost:5173"],
-    credentials: true,                // allow cookies/auth headers
+    credentials: true,            
   }));
 
 
