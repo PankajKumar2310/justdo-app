@@ -1,2 +1,74 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,400;1,700&display=swap");
 @import "tailwindcss";
 @import "tw-animate-css";
+
+/* Custom font classes */
+.font-roboto {
+  font-family: "Roboto", sans-serif;
+}
+
+/* Custom styles to match the design */
+.todos-bg-container {
+  background-color: #f9fbfe;
+  min-height: 100vh;
+}
+
+.todo-user-input {
+  background-color: white;
+  width: 100%;
+  border: 1px solid #e4e7eb;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.button {
+  color: white;
+  background-color: #4c63b6;
+  font-family: "Roboto", sans-serif;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px 20px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.button:hover {
+  background-color: #3d4f8f;
+}
+
+.label-container {
+  background-color: #e6f6ff;
+  width: 100%;
+  border-left: 5px solid #096f92;
+  border-radius: 4px;
+}
+
+.checkbox-input {
+  width: 20px;
+  height: 20px;
+  margin: 12px;
+}
+
+.checkbox-label {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  width: 82%;
+  margin: 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+.delete-icon-container {
+  text-align: right;
+  width: 18%;
+}
+
+.delete-icon {
+  padding: 15px;
+}
+
+.checked {
+  text-decoration: line-through;
+}

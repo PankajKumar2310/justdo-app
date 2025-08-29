@@ -9,9 +9,9 @@ function Home() {
       <Navbar />
 
       {/* Header Section */}
-      <div className="flex justify-center items-center mt-12">
-        <h1 className="font-extrabold text-3xl text-white bg-gradient-to-r from-blue-500 to-purple-600 rounded-2xl px-8 py-4 shadow-lg tracking-wide">
-          🚀 Todo | Docker App
+      <div className="flex justify-center items-center mt-8 mb-3">
+        <h1 className="font-extrabold text-3xl text-white bg-gradient-to-r p-2 from-blue-500 to-purple-600 rounded-2xl shadow-lg tracking-wide">
+        Manage Your Task Efficiently
         </h1>
       </div>
 

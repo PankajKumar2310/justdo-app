@@ -28,7 +28,7 @@ function Navbar() {
 
   return (
     <div className="flex justify-between items-center p-5 shadow m-5 rounded-2xl bg-white">
-      <h1 className="font-serif font-bold text-2xl">Todo App</h1>
+      <h1 className="font-serif font-bold text-2xl">JustDo</h1>
       <Button
         onClick={logoutHandler}
         className="bg-red-500 hover:bg-red-600 text-lg text-white rounded-2xl cursor-pointer"
